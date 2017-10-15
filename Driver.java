@@ -16,8 +16,17 @@ public class Driver {
 		currTime %= 6.25;
 		long minute = currMin.intValue();
 		String zero = (currMin < 10) ? "0" : "";
-		System.out.format(hour + ":" + zero + "%.0f%n", currMin);
-		JOptionPane.showMessageDialog(null, hour + ":" + minute);	
+		String ampm = "";
+		if (hour % 12 == 0){
+			ampm = "";
+		} else if(hour > 12){
+			ampm = "pm";
+			hour -= 12;
+		} else {
+			ampm = "am";
+		}
+		System.out.format(hour + ":" + zero + "%.0f%n" + " " + ampm, currMin);
+		JOptionPane.showMessageDialog(null, hour + ":" + minute + " " + ampm);	
 	}
 
 }

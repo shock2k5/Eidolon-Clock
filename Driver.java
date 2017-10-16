@@ -15,7 +15,7 @@ public class Driver {
 		Double currMin =  currTime / 6.25;
 		currTime %= 6.25;
 		long minute = currMin.intValue();
-		String zero = (currMin < 10) ? "0" : "";
+		String zero = (currMin < 10.0) ? "0" : "";
 		String ampm = "";
 		if (hour % 12 == 0){
 			ampm = "";
@@ -26,7 +26,7 @@ public class Driver {
 			ampm = "am";
 		}
 		System.out.format(hour + ":" + zero + "%.0f%n" + " " + ampm, currMin);
-		JOptionPane.showMessageDialog(null, hour + ":" + minute + " " + ampm);	
+		JOptionPane.showMessageDialog(null, hour + ":" + zero + minute + " " + ampm);	
 	}
 
 }

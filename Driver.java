@@ -1,20 +1,33 @@
 package Clock;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import javax.swing.JOptionPane;
 
 public class Driver {
 
 	public static void main(String[] args) {
+	    
+		TimeZone myZone = TimeZone.getTimeZone("UTC");
+		TimeZone.setDefault(myZone);
+		
+		System.out.println(myZone.toString());
+		long currTime = System.currentTimeMillis();
+		int midnight = 1508076700;
+		System.out.println("Midnight: " + midnight); System.out.println(myZone.getOffset(currTime));
+				currTime = (currTime + myZone.getOffset(currTime)) / 1000;
+				System.out.println("Current Time: " + currTime);
 
-		long currTime = System.currentTimeMillis() / 1000;
-		long midnight = 1508104500L;
 		currTime -= midnight;
 		currTime %= 9000;
 		long hour = currTime / 375;
 		currTime %= 375;
 		Double currMin =  currTime / 6.25;
 		currTime %= 6.25;
-		long minute = currMin.intValue();
+		int minute = currMin.intValue();
 		String zero = (currMin < 10.0) ? "0" : "";
 		String ampm = "";
 		if (hour % 12 == 0){
